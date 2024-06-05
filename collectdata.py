@@ -3,6 +3,8 @@ import os
 import cv2
 cap=cv2.VideoCapture(0)
 directory='Image/'
+max_images_per_class = 60
+
 while True:
     _,frame=cap.read()
     count = {
@@ -31,7 +33,12 @@ while True:
              'w': len(os.listdir(directory+"/W")),
              'x': len(os.listdir(directory+"/X")),
              'y': len(os.listdir(directory+"/Y")),
-             'z': len(os.listdir(directory+"/Z"))
+             'z': len(os.listdir(directory+"/Z")),
+             'hello': len(os.listdir(directory+"/HELLO")),
+             'love': len(os.listdir(directory+"/LOVE")),
+             'no': len(os.listdir(directory+"/NO")),
+             'thanks': len(os.listdir(directory+"/THANKS")),
+             'yes': len(os.listdir(directory+"/YES"))
              }
     # cv2.putText(frame, "a : "+str(count['a']), (10, 100), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
     # cv2.putText(frame, "b : "+str(count['b']), (10, 110), cv2.FONT_HERSHEY_PLAIN, 1, (0,255,255), 1)
@@ -64,59 +71,162 @@ while True:
     cv2.imshow("data",frame)
     cv2.imshow("ROI",frame[40:400,0:300])
     frame=frame[40:400,0:300]
-    interrupt = cv2.waitKey(10)
+    interrupt = cv2.waitKey(50)
     if interrupt & 0xFF == ord('a'):
-        cv2.imwrite(directory+'A/'+str(count['a'])+'.png',frame)
+        if count['a'] < max_images_per_class:
+            cv2.imwrite(directory+'A/'+str(count['a'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('b'):
-        cv2.imwrite(directory+'B/'+str(count['b'])+'.png',frame)
+        if count['b'] < max_images_per_class:
+            cv2.imwrite(directory+'B/'+str(count['b'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('c'):
-        cv2.imwrite(directory+'C/'+str(count['c'])+'.png',frame)
+        if count['c'] < max_images_per_class:
+            cv2.imwrite(directory+'C/'+str(count['c'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('d'):
-        cv2.imwrite(directory+'D/'+str(count['d'])+'.png',frame)
+        if count['d'] < max_images_per_class:
+            cv2.imwrite(directory+'D/'+str(count['d'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('e'):
-        cv2.imwrite(directory+'E/'+str(count['e'])+'.png',frame)
+        if count['e'] < max_images_per_class:
+            cv2.imwrite(directory+'E/'+str(count['e'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('f'):
-        cv2.imwrite(directory+'F/'+str(count['f'])+'.png',frame)
+        if count['f'] < max_images_per_class:
+            cv2.imwrite(directory+'F/'+str(count['f'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('g'):
-        cv2.imwrite(directory+'G/'+str(count['g'])+'.png',frame)
+        if count['g'] < max_images_per_class:
+            cv2.imwrite(directory+'G/'+str(count['g'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('h'):
-        cv2.imwrite(directory+'H/'+str(count['h'])+'.png',frame)
+        if count['h'] < max_images_per_class:
+            cv2.imwrite(directory+'H/'+str(count['h'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('i'):
-        cv2.imwrite(directory+'I/'+str(count['i'])+'.png',frame)
+        if count['i'] < max_images_per_class:
+            cv2.imwrite(directory+'I/'+str(count['i'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('j'):
-        cv2.imwrite(directory+'J/'+str(count['j'])+'.png',frame)
+        if count['j'] < max_images_per_class:
+            cv2.imwrite(directory+'J/'+str(count['j'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('k'):
-        cv2.imwrite(directory+'K/'+str(count['k'])+'.png',frame)
+        if count['k'] < max_images_per_class:
+            cv2.imwrite(directory+'K/'+str(count['k'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('l'):
-        cv2.imwrite(directory+'L/'+str(count['l'])+'.png',frame)
+        if count['l'] < max_images_per_class:
+            cv2.imwrite(directory+'L/'+str(count['l'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('m'):
-        cv2.imwrite(directory+'M/'+str(count['m'])+'.png',frame)
+        if count['m'] < max_images_per_class:
+            cv2.imwrite(directory+'M/'+str(count['m'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('n'):
-        cv2.imwrite(directory+'N/'+str(count['n'])+'.png',frame)
+        if count['n'] < max_images_per_class:
+            cv2.imwrite(directory+'N/'+str(count['n'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('o'):
-        cv2.imwrite(directory+'O/'+str(count['o'])+'.png',frame)
+        if count['o'] < max_images_per_class:
+            cv2.imwrite(directory+'O/'+str(count['o'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('p'):
-        cv2.imwrite(directory+'P/'+str(count['p'])+'.png',frame)
+        if count['p'] < max_images_per_class:
+            cv2.imwrite(directory+'P/'+str(count['p'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('q'):
-        cv2.imwrite(directory+'Q/'+str(count['q'])+'.png',frame)
+        if count['q'] < max_images_per_class:
+            cv2.imwrite(directory+'Q/'+str(count['q'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('r'):
-        cv2.imwrite(directory+'R/'+str(count['r'])+'.png',frame)
+        if count['r'] < max_images_per_class:
+            cv2.imwrite(directory+'R/'+str(count['r'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('s'):
-        cv2.imwrite(directory+'S/'+str(count['s'])+'.png',frame)
+        if count['s'] < max_images_per_class:
+            cv2.imwrite(directory+'S/'+str(count['s'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('t'):
-        cv2.imwrite(directory+'T/'+str(count['t'])+'.png',frame)
+        if count['t'] < max_images_per_class:
+            cv2.imwrite(directory+'T/'+str(count['t'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('u'):
-        cv2.imwrite(directory+'U/'+str(count['u'])+'.png',frame)
+        if count['u'] < max_images_per_class:
+            cv2.imwrite(directory+'U/'+str(count['u'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('v'):
-        cv2.imwrite(directory+'V/'+str(count['v'])+'.png',frame)
+        if count['v'] < max_images_per_class:
+            cv2.imwrite(directory+'V/'+str(count['v'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('w'):
-        cv2.imwrite(directory+'W/'+str(count['w'])+'.png',frame)
+        if count['w'] < max_images_per_class:
+            cv2.imwrite(directory+'W/'+str(count['w'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('x'):
-        cv2.imwrite(directory+'X/'+str(count['x'])+'.png',frame)
+        if count['x'] < max_images_per_class:
+            cv2.imwrite(directory+'X/'+str(count['x'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('y'):
-        cv2.imwrite(directory+'Y/'+str(count['y'])+'.png',frame)
+        if count['y'] < max_images_per_class:
+            cv2.imwrite(directory+'Y/'+str(count['y'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
     if interrupt & 0xFF == ord('z'):
-        cv2.imwrite(directory+'Z/'+str(count['z'])+'.png',frame)
+        if count['z'] < max_images_per_class:
+            cv2.imwrite(directory+'Z/'+str(count['z'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
+    if interrupt & 0xFF == ord('0'):
+        if count['hello'] < max_images_per_class:
+            cv2.imwrite(directory+'HELLO/'+str(count['hello'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
+    if interrupt & 0xFF == ord('1'):
+        if count['love'] < max_images_per_class:
+            cv2.imwrite(directory+'LOVE/'+str(count['love'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
+    if interrupt & 0xFF == ord('2'):
+        if count['no'] < max_images_per_class:
+            cv2.imwrite(directory+'NO/'+str(count['no'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
+    if interrupt & 0xFF == ord('3'):
+        if count['thanks'] < max_images_per_class:
+            cv2.imwrite(directory+'THANKS/'+str(count['thanks'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
+    if interrupt & 0xFF == ord('4'):
+        if count['yes'] < max_images_per_class:
+            cv2.imwrite(directory+'YES/'+str(count['yes'])+'.png',frame)
+        else:
+            print("Limite de imagens atingido para a classe.")
 
 
 cap.release()

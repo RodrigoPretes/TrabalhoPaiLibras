@@ -11,8 +11,19 @@ for action in actions:
     for sequence in range(no_sequences):
         window = []
         for frame_num in range(sequence_length):
-            res = np.load(os.path.join(DATA_PATH, action, str(sequence), "{}.npy".format(frame_num)))
-            window.append(res)
+            file_path = os.path.join(DATA_PATH, action, str(sequence), "{}.npy".format(frame_num))
+            try:
+                res = np.load(file_path, allow_pickle=True)
+                if res.shape == ():  # Check if the array is empty
+                    print(f"Warning: Empty array loaded from {file_path}")
+                    continue
+                if res.shape!= (63,):  # Check shape
+                    raise ValueError(f"Frame {frame_num} has shape {res.shape}, expected (63,)")
+                window.append(res)
+            except FileNotFoundError:
+                print(f"Error: File not found at {file_path}")
+            except Exception as e:
+                print(f"Error: {e} when loading {file_path}")
         sequences.append(window)
         labels.append(label_map[action])
 
