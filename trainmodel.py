@@ -1,3 +1,4 @@
+#gera o modelo da rede neural. pega como parametro o arquivo gerado no código anterior data.py e cria o arquivo model.h5
 from function import *
 from sklearn.model_selection import train_test_split
 from keras.utils import to_categorical
@@ -5,7 +6,6 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense
 from keras.callbacks import TensorBoard
 label_map = {label:num for num, label in enumerate(actions)}
-# print(label_map)
 sequences, labels = [], []
 for action in actions:
     for sequence in range(no_sequences):
@@ -14,16 +14,16 @@ for action in actions:
             file_path = os.path.join(DATA_PATH, action, str(sequence), "{}.npy".format(frame_num))
             try:
                 res = np.load(file_path, allow_pickle=True)
-                if res.shape == ():  # Check if the array is empty
-                    print(f"Warning: Empty array loaded from {file_path}")
+                if res.shape == ():
+                    print(f"Atenção: Vetor vazio carregado do arquivo {file_path}")
                     continue
-                if res.shape!= (63,):  # Check shape
-                    raise ValueError(f"Frame {frame_num} has shape {res.shape}, expected (63,)")
+                if res.shape!= (63,):
+                    raise ValueError(f"Frame {frame_num} possui tamanho {res.shape}, esperado (63,)")
                 window.append(res)
             except FileNotFoundError:
-                print(f"Error: File not found at {file_path}")
+                print(f"Erro: Arquivo não encontrado em {file_path}")
             except Exception as e:
-                print(f"Error: {e} when loading {file_path}")
+                print(f"Erro: {e} ao carregar {file_path}")
         sequences.append(window)
         labels.append(label_map[action])
 
